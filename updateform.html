@@ -96,24 +96,24 @@
       document.getElementById('username').value = '';
       document.getElementById('password').value = '';
 
-      if(localStorage.getItem(user.email) !== null){
-        removeUserFromTheScreen(user.email);
-      }
+      //if(localStorage.getItem(user.email) !== null){
+        //removeUserFromTheScreen(user.email);
+      //}
          const parentNode = document.getElementById('listOfUsers');
          const childHTML =  `<li id = ${user._id}> ${user.name} - ${user.email} 
                             <button onclick = deleteUser('${user._id}')>Delete</button> 
-                            <button onclick = editUserDetails('${user._id}','${user.name}')>Edit</button>
+                            <button onclick = editUserDetails('${user.email}','${user.name}','${user._id}')>Edit</button>
                             </li>`;
 
          parentNode.innerHTML = parentNode.innerHTML+childHTML;
         
      };
 
-     function editUserDetails(email,name){
+     function editUserDetails(email,name,userId){
       document.getElementById('emailId').value = email;
       document.getElementById('username').value = name;
 
-      deleteUser(email);
+      deleteUser(userId);
      }
 
      function deleteUser(userId) {
